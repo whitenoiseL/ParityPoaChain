@@ -1,14 +1,24 @@
+# Parity POA Chain Prototype
+
+## Via docker
+Make sure you have docker installed. If not, install [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) first.
+```
+docker-compose up
+```
+
+## Set Balance
+Replace account address in spec.json with your account address, i.e.
+```
 {
 
-	"name": "parity",
-    	"engine": {
+        "name": "parity",
+        "engine": {
         "authorityRound": {
             "params": {
                 "gasLimitBoundDivisor": "0x400",
                 "stepDuration": "2",
                 "validators" : {
-                    "list": [ "0x6090f394eae7cb718944575a4d6aa37be4186f72", "0x88f18024ac8e2a8c795add8650221702c39a4200" ]
-
+                    "list": [ "0x43b010da4d5d43f9417603f00108f45e89860248" ]
                 }
             }
         }
@@ -35,6 +45,7 @@
         "0x0000000000000000000000000000000000000002": { "balance": "1", "builtin": { "name": "sha256", "pricing": { "linear": { "base": 60, "word": 12 } } } },
         "0x0000000000000000000000000000000000000003": { "balance": "1", "builtin": { "name": "ripemd160", "pricing": { "linear": { "base": 600, "word": 120 } } } },
         "0x0000000000000000000000000000000000000004": { "balance": "1", "builtin": { "name": "identity", "pricing": { "linear": { "base": 15, "word": 3 } } } },
-	    "0x50f8019250fe0e016140fa231656d2028e161612": { "balance": "1606938044258990275541962092341162602522202993782792835301376" }
+            "YOUR ACCOUNT ADDRESS HERE": { "balance": "CUSTOMIZE YOUR INITAL BALANCE HERE" }
     }
-}
+
+```
