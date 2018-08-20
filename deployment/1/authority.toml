@@ -18,8 +18,7 @@ apis = ["web3", "eth", "net", "parity", "traces", "rpc", "personal", "parity_acc
 
 [mining]
 reseal_on_txs = "none"
-engine_signer = "0x6090f394eae7cb718944575a4d6aa37be4186f72"
-
+engine_signer = "0x7c7b95a1e1f6f0c186c3f4f6643e94402fc7767d"
 
 [websockets]
 disable = false

@@ -8,8 +8,9 @@ services:
        - 8545:8545
        - 8546:8546
        - 30303:30303 
-       image: parity/parity:beta
+       image: parity/parity:stable
        volumes:
+       - /usr/bin/parity:/parity/parity
        - ./deployment/chain/spec.json:/parity/spec.json:ro
        - ./deployment/chain/reserved_peers:/parity/reserved_peers:ro
        - ./deployment/1/password:/parity/password:ro
@@ -18,11 +19,10 @@ services:
        - ./data/1:/parity/data
        command: --chain /parity/spec.json --config /parity/authority.toml -d /parity/data  
    host2:
-       container_name: host2
-       ports:
-       - 30304:30303
-       image: parity/parity:beta
+       container_name: host2 
+       image: parity/parity:stable
        volumes:
+       - /usr/bin/parity:/parity/parity
        - ./deployment/chain/spec.json:/parity/spec.json:ro
        - ./deployment/chain/reserved_peers:/parity/reserved_peers:ro
        - ./deployment/2/password:/parity/password:ro
@@ -30,14 +30,13 @@ services:
        - ./deployment/2/${NETWORK_NAME}:/parity/data/keys/${NETWORK_NAME}
        - ./data/2:/parity/data
        command: --chain /parity/spec.json --config /parity/authority.toml -d /parity/data  
-   monitor:
-      image: buythewhale/ethstats_monitor
-      volumes:
+  monitor:
+    image: buythewhale/ethstats_monitor
+    volumes:
       - ./monitor/app.json:/home/ethnetintel/eth-net-intelligence-api/app.json:ro
-   dashboard:
-      image: buythewhale/ethstats
-      volumes:
+  dashboard:
+    image: buythewhale/ethstats
+    volumes:
       - ./dashboard/ws_secret.json:/eth-netstats/ws_secret.json:ro
-      ports:
+    ports:
       - 3001:3000
-
