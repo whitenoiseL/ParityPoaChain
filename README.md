@@ -49,3 +49,6 @@ Replace account address in spec.json with your account address, i.e.
     }
 
 ```
+
+## Monitor on Chain
+Type url: http://localhost:3001
